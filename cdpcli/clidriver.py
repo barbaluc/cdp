@@ -353,7 +353,7 @@ class CLIDriver(object):
 
     def __k8s(self):
         kubectl_cmd = DockerCommand(self._cmd, self._context.opt['--docker-image-kubectl'], self._context.opt['--volume-from'], True)
-        helm_cmd = DockerCommand(self._cmd, self._context.opt['--docker-image-helm'], self._context.opt['--volume-from'], True)
+        helm_cmd = DockerCommand(self._cmd, self.__getParamOrEnv('docker-image-helm'), self._context.opt['--volume-from'], True)
         
         if self._context.opt['--image-tag-latest']:
             tag =  self.__getTagLatest()
